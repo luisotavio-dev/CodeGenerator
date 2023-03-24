@@ -1,0 +1,10 @@
+{
+  "env": {
+    "PGHOST": "127.0.0.1",
+    "PGPORT": 5432,
+    "PGUSER": "postgres",
+    "PGPASSWORD": "5295241",
+    "PGDATABASE": "finanze",
+    "CAMINHO_PARA_GERAR_JAVA": "/Users/luisotaviopereira/Desenvolvimento/Projetos/CodigoGerado/Java/"
+  }
+}
