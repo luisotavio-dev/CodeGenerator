@@ -4,6 +4,7 @@ const JavaModelTemplate =
 {{#hasBigDecimal}}import java.math.BigDecimal;{{/hasBigDecimal}}
 {{#hasLocalDateTime}}import java.time.LocalDateTime;{{/hasLocalDateTime}}
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,8 +30,10 @@ public class {{className}} {
     {{^primaryKey}}
     @Column(name = "{{columnName}}"{{#columnSize}}, length = {{columnSize}}{{/columnSize}}{{#notNull}}, nullable = false{{/notNull}})
     {{/primaryKey}}
+    @JsonProperty("{{columnName}}")
     private {{columnType}} {{columnAttributeName}};
     {{/columns}}
+
 }
 `;
 

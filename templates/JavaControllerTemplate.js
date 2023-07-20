@@ -30,38 +30,33 @@ public class {{className}}Controller {
     private {{className}}Service service;
 
     @GetMapping
-    public List<{{className}}> getAll() {
-        try {
-            return service.getAll();
-        } catch (Exception e) {
-            throw Exceptions.generateGenericException(e);
-        }
+    public List<{{className}}> consultarTodos() {
+        return service.consultarTodos();
     }
 
     @GetMapping("/{id}")
-    public {{className}} getById(@PathVariable Integer id) {
-        Optional<{{className}}> object = service.getOne(id);
-
-        if (object.isPresent()) {
-            return object.get();
-        } else {
-            throw new NotFoundException("{{className}} " + id + " não encontrado.");
-        }
+    public {{className}} consultarPorId(@PathVariable Integer id) {
+        try {
+    		return service.consultarEspecífico(id).get();
+		} catch (Exception e) {
+			throw new NotFoundException("Nenhum registro encontrado com o id " + id);
+		}
     }
 
     @PostMapping
-    public {{className}} save(@RequestBody {{className}} object) {
-        try {
-            return service.save(object);
-        } catch (Exception e) {
-            throw Exceptions.generateGenericException(e);
-        }
+    public {{className}} inserir(@RequestBody {{className}} object) {
+        return service.salvar(object);
+    }
+
+    @PutMapping
+    public {{className}} editar(@RequestBody {{className}} object) {
+    	return service.salvar(object);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
+    public void excluir(@PathVariable Integer id) {
         try {
-            service.delete(id);
+            service.excluir(id);
         } catch (Exception e) {
             throw Exceptions.generateGenericException(e);
         }

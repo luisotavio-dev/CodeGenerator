@@ -15,21 +15,20 @@ public class {{className}}Service {
     @Autowired
     private {{className}}Repository repository;
 
-    public List<{{className}}> getAll() {
+    public List<{{className}}> consultarTodos() {
         return repository.findAll();
     }
 
-    public Optional<{{className}}> getOne(Integer id) {
+    public Optional<{{className}}> consultarEspecifico(Integer id) {
         return repository.findById(id);
     }
 
-    public {{className}} save({{className}} object) {
+    public {{className}} salvar({{className}} object) {
         return repository.save(object);
     }
 
-    public void delete(Integer id) {
-        {{className}} object = getOne(id).get();
-        repository.delete(object);
+    public void excluir(Integer id) {
+        repository.deleteById(id);
     }
 }
 `;
