@@ -1,8 +1,7 @@
-const JavaControllerTemplate = 
-`package com.luisot.codegen.controller;
+const JavaControllerTemplate =
+    `package com.luisot.codegen.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,7 +37,7 @@ public class {{className}}Controller {
     @GetMapping("/{id}")
     public {{className}} consultarPorId(@PathVariable Integer id) {
         try {
-    		return service.consultarEspecífico(id).get();
+    		return service.consultarEspecifico(id).get();
 		} catch (Exception e) {
 			throw new NotFoundException("Nenhum registro encontrado com o id " + id);
 		}
